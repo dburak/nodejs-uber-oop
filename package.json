@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/dburak/nodejs-uber-oop/issues"
   },
-  "homepage": "https://github.com/dburak/nodejs-uber-oop#readme"
+  "homepage": "https://github.com/dburak/nodejs-uber-oop#readme",
+  "dependencies": {
+    "flatted": "^3.2.6",
+    "uuid": "^8.3.2"
+  }
 }

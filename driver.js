@@ -1,7 +1,13 @@
+
 class Driver {
-  constructor(name, location) {
+  constructor(id, name, location) {
+    this.id = id;
     this.name = name;
     this.location = location;
+  }
+
+  static create({id, name, location }) {
+    return new Driver(id, name, location);
   }
 }
 
