@@ -13,18 +13,24 @@ burak.book(ahmet, "Kentpark AVM", "Bahçeli 7.cadde");
 
 async function main() {
   try {
-    await passengerDatabase.save([burak])
+    await passengerDatabase.save([burak]);
 
-    await driverDatabase.save([ahmet])
+    await driverDatabase.save([ahmet]);
 
-    const aslı = Passenger.create({id: uuidv4(), name: 'Aslı', location: 'Bilkent' })
+    const aslı = Passenger.create({
+      id: uuidv4(),
+      name: "Aslı",
+      location: "Bilkent",
+    });
 
-    await passengerDatabase.insert(aslı)
-    const passengers = await passengerDatabase.load()
-    passengers.forEach(printBookingHistory)
+    await passengerDatabase.insert(aslı);
+    const passengers = await passengerDatabase.load();
+    passengers.forEach(printBookingHistory);
+
+    console.log(await passengerDatabase.findBy("location", "Bilkent"));
   } catch (e) {
-    return console.log(e)
+    return console.log(e);
   }
 }
 
-main()
+main();
