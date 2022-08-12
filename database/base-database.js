@@ -1,5 +1,5 @@
-const fs = require("fs");
-const flatted = require("flatted"); // for circular json structure
+const fs = require('fs');
+const flatted = require('flatted'); // for circular json structure
 
 class BaseDatabase {
   constructor(model) {
@@ -22,7 +22,7 @@ class BaseDatabase {
 
   load() {
     return new Promise((resolve, reject) => {
-      fs.readFile(`${this.filename}.json`, "utf8", (err, file) => {
+      fs.readFile(`${this.filename}.json`, 'utf8', (err, file) => {
         if (err) return reject(err);
 
         const objects = flatted.parse(file);

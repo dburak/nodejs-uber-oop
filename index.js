@@ -1,36 +1,39 @@
-const Passenger = require("./passenger");
-const Driver = require("./driver");
-const { passengerDatabase, driverDatabase } = require("./database");
-const { v4: uuidv4 } = require("uuid");
-const printBookingHistory = require("./lib/print-booking-history");
+const express = require('express');
+const { passengerDatabase } = require('./database');
+const flatted = require('flatted');
+const bodyParser = require('body-parser');
 
-const burak = new Passenger(uuidv4(), "Burak", "Bahçeli 7.cadde");
-const ahmet = new Driver(uuidv4(), "Ahmet", "Milli Kütüphane");
+const app = express();
+app.use(bodyParser.json());
+app.set('view engine', 'pug');
 
-burak.book(ahmet, "Bahçeli 7.cadde", "Armada AVM");
-burak.book(ahmet, "Armada AVM", "Kentpark AVM");
-burak.book(ahmet, "Kentpark AVM", "Bahçeli 7.cadde");
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
-async function main() {
-  try {
-    await passengerDatabase.save([burak]);
+app.get('/passengers', async (req, res) => {
+  const passengers = await passengerDatabase.load();
+  // res.send(flatted.stringify(passengers));
+  res.render('passengers', { passengers });
+});
 
-    await driverDatabase.save([ahmet]);
+app.post('/passengers', async (req, res) => {
+  const passenger = await passengerDatabase.insert(req.body);
 
-    const aslı = Passenger.create({
-      id: uuidv4(),
-      name: "Aslı",
-      location: "Bilkent",
-    });
+  res.send(passenger);
+});
 
-    await passengerDatabase.insert(aslı);
-    const passengers = await passengerDatabase.load();
-    passengers.forEach(printBookingHistory);
+app.delete('/passengers/:index', async (req, res) => {
+  await passengerDatabase.remove('index', req.params.index);
 
-    console.log(await passengerDatabase.findBy("location", "Bilkent"));
-  } catch (e) {
-    return console.log(e);
-  }
-}
+  res.send('OK');
+});
 
-main();
+app.get('/passengers/:passengerId', async (req, res) => {
+  const passenger = await passengerDatabase.find(req.params.passengerId);
+  res.render('passenger', { passenger });
+});
+
+app.listen(3000, () => {
+  console.log('started listening on 3000');
+});
