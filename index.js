@@ -23,8 +23,8 @@ app.post('/passengers', async (req, res) => {
   res.send(passenger);
 });
 
-app.delete('/passengers/:index', async (req, res) => {
-  await passengerDatabase.remove('index', req.params.index);
+app.delete('/passengers/:passengerId', async (req, res) => {
+  await passengerDatabase.removeBy('id', req.params.passengerId);
 
   res.send('OK');
 });
