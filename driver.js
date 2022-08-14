@@ -1,9 +1,12 @@
+const { v4: uuidv4 } = require('uuid');
 
 class Driver {
-  constructor(id, name, location) {
-    this.id = id;
-    this.name = name;
-    this.location = location;
+    constructor(id = uuidv4(), name, location) {
+      this.id = id;
+  
+      this.name = name;
+      this.location = location;
+      
   }
 
   static create({id, name, location }) {
