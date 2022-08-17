@@ -1,6 +1,6 @@
 const Passenger = require('./passenger');
 const Driver = require('./driver');
-const { passengerDatabase, driverDatabase } = require('./database');
+const { passengerService, driverService } = require('./service');
 const { v4: uuidv4 } = require('uuid');
 const printBookingHistory = require('./lib/print-booking-history');
 
@@ -20,20 +20,20 @@ burak.book(ahmet, 'Kentpark AVM', 'Bahçeli 7.cadde');
 
 async function main() {
   try {
-    await passengerDatabase.save([burak]);
+    await passengerService.save([burak]);
 
-    await driverDatabase.save([ahmet]);
+    await driverService.save([ahmet]);
 
     const aslı = Passenger.create({
       name: 'Aslı',
       location: 'Bilkent',
     });
 
-    await passengerDatabase.insert(aslı);
-    const passengers = await passengerDatabase.load();
+    await passengerService.insert(aslı);
+    const passengers = await passengerService.load();
     passengers.forEach(printBookingHistory);
 
-    console.log(await passengerDatabase.findBy('location', 'Bilkent'));
+    console.log(await passengerService.findBy('location', 'Bilkent'));
   } catch (e) {
     return console.log(e);
   }
