@@ -28,7 +28,7 @@ class BaseService {
   }
 
   async query(obj) {
-    return this.model.find(obj)
+    return this.model.find(obj);
   }
 
   async findBy(property, value) {

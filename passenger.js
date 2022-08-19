@@ -1,18 +1,16 @@
-const Booking = require('./booking');
-
 const mongoose = require('mongoose');
+
 const PassengerSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true, minlength: 2 },
   location: String,
   bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Booking',
-      autopopulate: {maxDepth: 1},
+      autopopulate: { maxDepth: 2 },
     },
   ],
 });
-
 
 PassengerSchema.plugin(require('mongoose-autopopulate'));
 

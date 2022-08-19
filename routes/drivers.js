@@ -1,9 +1,10 @@
-const { passengerService, driverService } = require('../services');
+const { driverService } = require('../services');
 
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   const drivers = await driverService.load();
+
   res.render('drivers', { drivers });
 });
 
@@ -19,8 +20,15 @@ router.delete('/:driverId', async (req, res) => {
   res.send('OK');
 });
 
+router.get('/young-drivers', async (req, res) => {
+  const drivers = await driverService.findYoungDrivers();
+
+  res.render('drivers', { drivers });
+});
+
 router.get('/:driverId', async (req, res) => {
   const driver = await driverService.find(req.params.driverId);
+  if (!driver) return res.status(404).send('Cannot find driver');
   res.render('driver', { driver });
 });
 
