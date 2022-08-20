@@ -1,5 +1,5 @@
 const BaseService = require('./base-service');
-const Booking = require('../booking');
+const Booking = require('../models/booking');
 const driverService = require('./driver-service');
 const passengerService = require('./passenger-service');
 

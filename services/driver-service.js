@@ -1,5 +1,5 @@
 const BaseService = require('./base-service');
-const Driver = require('../driver');
+const Driver = require('../models/driver');
 
 class DriverService extends BaseService {
   async findByDriverName(name) {

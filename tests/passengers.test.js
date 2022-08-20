@@ -1,7 +1,7 @@
-const app = require('../..');
+const app = require('../index');
 const request = require('supertest')(app);
 
-test.skip('creates a new passenger', async () => {
+test('creates a new passenger', async () => {
   const passengerToCreate = {
     name: 'Test passenger',
     location: 'Moda',

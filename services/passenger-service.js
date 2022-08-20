@@ -1,5 +1,5 @@
 const BaseService = require('./base-service');
-const Passenger = require('../passenger');
+const Passenger = require('../models/passenger');
 
 class PassengerService extends BaseService {
   async findByName(name) {
