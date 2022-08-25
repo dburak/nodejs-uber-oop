@@ -1,0 +1,10 @@
+{
+  "prettier.singleQuote": true,
+  "prettier.configPath": "",
+  "prettier.jsxSingleQuote": true,
+  "prettier.requireConfig": false,
+  "prettier.resolveGlobalModules": false,
+  "prettier.semi": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single"
+}
