@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  front-end:
+    build: front-end
+    ports:
+      - 5173:5173
+  back-end:
+    build: back-end
+    environment:
+      MONGODB_CONNECTION_STRING: "mongodb://mongodb/test"
+    ports: 
+      - 3000:3000
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - 37017:27017
+    volumes:
+      - ./data:/data/db

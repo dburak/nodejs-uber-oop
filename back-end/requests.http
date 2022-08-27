@@ -8,7 +8,7 @@ content-type: application/json
 GET http://localhost:3000/passengers/62ff21afb8951bc52ab032f7 HTTP/1.1
 
 ###
-DELETE http://localhost:3000/passengers/5e9de11c0b0ac272d7866b1b HTTP/1.1
+DELETE http://localhost:3000/passengers/630a6c1943713a00cb40e26c HTTP/1.1
 
 ###
 
@@ -22,7 +22,7 @@ content-type: application/json
 POST http://localhost:3000/drivers HTTP/1.1
 content-type: application/json
 
-{"name":"Ahmet", "location": "Bilkent"}
+{"name":"Ahmet", "age": 35, "location": "Bilkent"}
 
 ###
 DELETE http://localhost:3000/drivers/5ea70bf063b0877147bd3e6b HTTP/1.1

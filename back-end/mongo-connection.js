@@ -1,11 +1,13 @@
 // getting-started.js
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/test');
+const connectionString =
+  process.env.MONGODB_CONNECTION_STRING || 'mongodb://mongodb/test';
 
+mongoose.connect(connectionString);
 
 const db = mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error'));
 db.once('open', function () {
-   console.log('we are connected to mongodb!');
+  console.log('we are connected to mongodb!');
 });
