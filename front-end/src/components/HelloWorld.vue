@@ -1,8 +1,4 @@
 <script setup>
-import { useCounterStore } from '../stores/counter';
-
-const store = useCounterStore();
-
 defineProps({
   msg: {
     type: String,
@@ -14,12 +10,7 @@ defineProps({
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>
-      This is a simple counter.
-      <p class="counter">{{ store.counter }}</p>
-      <button @click="store.increment" class="increment">Increment</button>
-      <button @click="store.decrement" class="decrement">Decrement</button>
-    </h3>
+    <h3>With this app, you can book a taxi from one place to another</h3>
   </div>
 </template>
 
@@ -27,7 +18,7 @@ defineProps({
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
-  top: -10px;
+  top: -30px;
 }
 
 h3 {
