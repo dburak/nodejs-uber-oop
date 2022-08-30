@@ -10,7 +10,7 @@ First implementation of uber-like object-oriented web application.
 
 **Testing:** Jest
 
-**Deployment:** Docker, Google Cloud Run
+**Deployment:** Docker, Google Cloud Run, MongoDB Atlas
 
 ## Demo
 
