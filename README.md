@@ -6,7 +6,7 @@ First implementation of uber-like object-oriented web application.
 
 **Client:** Vue 3 Composition API, Pinia
 
-**Server:** NodeJS, Express, MongoDB
+**Server:** NodeJS, Express, MongoDB, Pug
 
 **Testing:** Jest
 
